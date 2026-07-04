@@ -1,0 +1,46 @@
+/* src/styles.css */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #050505; /* Deep black/gray */
+  color: #00ff00; /* Terminal green */
+  font-family: 'Courier New', Courier, monospace;
+  height: 100vh;
+  box-sizing: border-box;
+  overflow: hidden; /* Prevent scrolling on the dash */
+}
+
+.dash-container {
+  padding: 30px;
+}
+
+h2 {
+  margin-top: 0;
+  letter-spacing: 2px;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #333;
+  margin-bottom: 20px;
+}
+
+.telemetry-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 28px;
+}
+
+.metric-row {
+  display: flex;
+}
+
+.label {
+  width: 150px; /* Fixed width keeps everything aligned */
+  color: #888;  /* Dimmer color for the labels */
+}
+
+.value {
+  font-weight: bold;
+}

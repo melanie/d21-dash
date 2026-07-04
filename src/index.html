@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Dash</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="dash-container">
+    <h2>DIGITAL DASH : DEBUG MODE</h2>
+    <hr>
+    
+    <div class="telemetry-grid">
+      <div class="metric-row">
+        <span class="label">RPM</span>
+        <span class="value" id="rpm-val">0000</span>
+      </div>
+      <div class="metric-row">
+        <span class="label">SPEED</span>
+        <span class="value"><span id="speed-val">000</span> MPH</span>
+      </div>
+      <div class="metric-row">
+        <span class="label">COOLANT</span>
+        <span class="value"><span id="coolant-val">0.0</span> °F</span>
+      </div>
+      <div class="metric-row">
+        <span class="label">FUEL</span>
+        <span class="value"><span id="fuel-val">0.0</span> %</span>
+      </div>
+      <div class="metric-row">
+        <span class="label">TPS</span>
+        <span class="value"><span id="tps-val">0.0</span> %</span>
+      </div>
+      <div class="metric-row">
+        <span class="label">AFR</span>
+        <span class="value" id="afr-val">0.00</span>
+      </div>
+      <div class="metric-row">
+        <span class="label">BATTERY</span>
+        <span class="value" id="battery-val">0.00</span>
+      </div>
+      
+      <br>
+      
+      <div class="metric-row">
+        <span class="label">SIGNALS</span>
+        <span class="value">[ <span id="turn-left">    </span> | <span id="turn-right">     </span> ]</span>
+      </div>
+      <div class="metric-row">
+        <span class="label">GPS</span>
+        <span class="value" id="gps-val">0.00000, 0.00000</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="./renderer.js"></script>
+</body>
+</html>
