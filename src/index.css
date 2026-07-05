@@ -189,9 +189,6 @@ label {
   }
 
   & label {
-    color: var(--color-accent);
-    text-transform: none;
-    font-size: var(--font-size-md);
     padding-left: var(--spacing-xs);
   }
 }
