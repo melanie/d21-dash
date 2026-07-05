@@ -90,3 +90,6 @@ typings/
 
 # Electron-Forge
 out/
+
+# Local AI assistant context (not part of the project)
+MEMORY.md

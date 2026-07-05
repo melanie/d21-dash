@@ -24,7 +24,6 @@
           <path d="M10.8,39.4v-7.8H.8v-15.1h10v-7.8l36.4,15.2-36.4,15.4h0ZM11.8,10.2v7.2H1.8v13.1h10v7.2l32.8-13.8L11.8,10.2Z"/>
         </svg></div>
     </div>
-
     <div class="row">
       <div class="gauge-group">
         <div class="gauge-group-header">
@@ -38,9 +37,78 @@
           <span></span>
         </div>
         <div class="gauge-group-body">
-          <div class="gauge"><span id="tps-val">0.0</span> %</div>
-          <div class="gauge"><span id="fuel-val">0.0</span> %</div>
-          <div class="gauge"><span id="afr-val">0.00</span></div>
+          <div class="gauge">
+            <div id="tps-pips" class="gauge-pips">
+              <span></span>
+              <span></span>
+              <span></span> 
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="gauge-legend">
+              <span>100%</span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span>0%</span>
+            </div>
+          </div>
+          <div class="gauge">
+            <div id="fuel-pips" class="gauge-pips">
+              <span></span>
+              <span></span>
+              <span></span> 
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="gauge-legend">
+              <span>F</span>
+              <span></span>
+              <span>½</span>
+              <span></span>
+              <span>E</span>
+            </div>
+          </div>
+          <div class="gauge">
+            <div id="afr-pips" class="gauge-pips">
+              <span></span>
+              <span></span>
+              <span></span> 
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="gauge-legend">
+              <span>18</span>
+              <span>17</span>
+              <span>16</span>
+              <span>15</span>
+              <span>14</span>
+              <span>13</span>
+              <span>12</span>
+              <span>11</span>
+            </div>
+          </div>
         </div>
         <div class="gauge-group-footer">
           <label>TPS</label>
@@ -61,6 +129,7 @@
       <div class="gauge-group">
         <div class="gauge-group-header">
           <div class="gauge-group-header-icon">
+            <span id="coolant-alert" class="alert"></span>
             <svg viewBox="0 0 48 48">
               <path d="M15.8,36.4v-3.7c-7,3.4-6.3-3.9-15.8-.5v3.7c9.7-3.9,8.5,3.7,15.8.5Z"/>
               <path d="M32.2,32.7v3.7c7.3,3.4,6.1-4.4,15.8-.3v-3.9c-9.5-3.4-8.9,3.9-15.8.5Z"/>
@@ -87,9 +156,70 @@
           </div>
         </div>
         <div class="gauge-group-body">
-          <div class="gauge"><span id="coolant-val">0.0</span></div>
-          <div class="gauge"><span id="oil-pressure-val">0.0</span></div>
-          <div class="gauge"><span id="battery-val">0.0</span></div>
+          <div class="gauge">
+            <div id="coolant-pips" class="gauge-pips">
+              <span></span>
+              <span></span>
+              <span></span> 
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="gauge-legend">
+              <span>270º</span>
+              <span></span>
+              <span>120º</span>
+            </div>
+          </div>
+          <div class="gauge">
+            <div id="oil-pressure-pips" class="gauge-pips">
+              <span></span>
+              <span></span>
+              <span></span> 
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="gauge-legend">
+              <span>90</span>
+              <span>45</span>
+              <span>0</span>
+            </div>
+          </div>
+          <div class="gauge">
+            <div id="battery-pips" class="gauge-pips">
+              <span></span>
+              <span></span>
+              <span></span> 
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="gauge-legend">
+              <span>16</span>
+              <span>14</span>
+              <span>12</span>
+              <span>10</span>
+            </div>
+          </div>
         </div>
         <div class="gauge-group-footer">
           <label>ºF</label>
