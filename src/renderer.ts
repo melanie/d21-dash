@@ -54,8 +54,8 @@ window.electronAPI.onTelemetryUpdate((data) => {
   afrEl.textContent = data.afr.toFixed(2);
   batteryEl.textContent = data.batteryVoltage.toFixed(2);
   
-  turnLeftEl.textContent = data.turnSignals.left ? 'LEFT' : '    ';
-  turnRightEl.textContent = data.turnSignals.right ? 'RIGHT' : '     ';
+  turnLeftEl.classList.toggle('on', data.turnSignals.left);
+  turnRightEl.classList.toggle('on', data.turnSignals.right);
   
   gpsEl.textContent = `${data.gpsPosition.latitude.toFixed(5)}, ${data.gpsPosition.longitude.toFixed(5)}`;
 });
