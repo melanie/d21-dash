@@ -7,49 +7,48 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="dash-container">
-    <h2>DIGITAL DASH : DEBUG MODE</h2>
-    <hr>
-    
-    <div class="telemetry-grid">
-      <div class="metric-row">
-        <span class="label">RPM</span>
-        <span class="value" id="rpm-val">0000</span>
+  <div class="container">
+
+    <div class="row row-top">
+      <div class="arrow left-arrow"><span id="turn-left"></span></div>
+      <div class="readout readout-speed"><span id="speed-val">000</span> <label>mph</label></div>
+      <div class="readout readout-gps"><span id="gps-val">0.00000, 0.00000</span></div>
+      <div class="arrow right-arrow"><span id="turn-right"></span></div>
+    </div>
+
+    <div class="row">
+      <div class="gauge-group">
+        <div class="gauge-group-header"></div>
+        <div class="gauge-group-body">
+          <div class="gauge"><span id="tps-val">0.0</span> %</div>
+          <div class="gauge"><span id="fuel-val">0.0</span> %</div>
+          <div class="gauge"><span id="afr-val">0.00</span></div>
+        </div>
+        <div class="gauge-group-footer">
+          <label>TPS</label>
+          <label>Fuel</label>
+          <label>AFR</label>
+        </div>
       </div>
-      <div class="metric-row">
-        <span class="label">SPEED</span>
-        <span class="value"><span id="speed-val">000</span> MPH</span>
+
+      <div class="gauge-group">
+        <div class="readout-group"><span id="rpm-val">0000</span></div>
+        <div class="readout-group"></div>
+        <div class="gauge-group-footer"><label>Tach</label></div>
       </div>
-      <div class="metric-row">
-        <span class="label">COOLANT</span>
-        <span class="value"><span id="coolant-val">0.0</span> °F</span>
-      </div>
-      <div class="metric-row">
-        <span class="label">FUEL</span>
-        <span class="value"><span id="fuel-val">0.0</span> %</span>
-      </div>
-      <div class="metric-row">
-        <span class="label">TPS</span>
-        <span class="value"><span id="tps-val">0.0</span> %</span>
-      </div>
-      <div class="metric-row">
-        <span class="label">AFR</span>
-        <span class="value" id="afr-val">0.00</span>
-      </div>
-      <div class="metric-row">
-        <span class="label">BATTERY</span>
-        <span class="value" id="battery-val">0.00</span>
-      </div>
-      
-      <br>
-      
-      <div class="metric-row">
-        <span class="label">SIGNALS</span>
-        <span class="value">[ <span id="turn-left">    </span> | <span id="turn-right">     </span> ]</span>
-      </div>
-      <div class="metric-row">
-        <span class="label">GPS</span>
-        <span class="value" id="gps-val">0.00000, 0.00000</span>
+
+      <div class="gauge-group">
+        <div class="gauge-group-header"></div>
+        <div class="gauge-group-body">
+          <div class="gauge"><span id="coolant-val">0.0</span></div>
+          <div class="gauge"><span id="oil-pressure-val">0.0</span></div>
+          <div class="gauge"><span id="battery-val">0.0</span></div>
+        </div>
+        <div class="gauge-group-footer">
+          <label>ºF</label>
+          <label>lb/in<sup>2</sup></label>
+          <label>V</label>
+        </div>
       </div>
     </div>
   </div>

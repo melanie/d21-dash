@@ -1,10 +1,16 @@
 :root {
   --color-primary: #00ff00;
+  --color-white: #ffffff;
   --color-black: #050505;
   --color-gray-500: #888888;
   --color-gray-800: #333333;
   --color-gray-900: #1a1a1a;
   --color-lines: var(--color-gray-900);
+
+  --spacing-xs: 5px;
+  --spacing-sm: 10px;
+  --spacing-md: 30px;
+  --spacing-lg: 60px;
 }
 
 body {
@@ -22,37 +28,84 @@ body {
   overflow: hidden; /* Prevent scrolling on the dash */
 }
 
-.dash-container {
-  padding: 30px;
-}
-
-h2 {
-  margin-top: 0;
-  letter-spacing: 2px;
-}
-
-hr {
-  border: none;
-  border-top: 1px solid var(--color-lines);
-  margin-bottom: 20px;
-}
-
-.telemetry-grid {
+.container {
+  padding: var(--spacing-md);
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  font-size: 28px;
+  gap: var(--spacing-md);
+  height: 100vh;
+  box-sizing: border-box;
 }
 
-.metric-row {
+.row {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: var(--spacing-lg);
+  flex: 7 1 0;
 }
 
-.label {
-  width: 150px; /* Fixed width keeps everything aligned */
-  color: var(--color-gray-500);  /* Dimmer color for the labels */
+.row-top {
+  flex: 4 1 0;
 }
 
-.value {
-  font-weight: bold;
+.arrow {
+  width: var(--spacing-lg);
+  height: var(--spacing-lg);
+  flex: 1;
 }
+
+label {
+  text-transform: uppercase;
+}
+
+.readout {
+  padding: var(--spacing-xs);
+  border: 1px solid var(--color-white);
+  background-color: var(--color-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+
+  & label {
+    color: var(--color-white);
+  }
+}
+
+.gauge-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  flex: 1;
+  justify-content: space-between;
+
+  &:nth-child(2) {
+    flex: 2;
+  }
+
+  & .gauge-group-header, & .gauge-group-body, & .gauge-group-footer {
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-xs);
+    justify-content: space-between;
+  }
+
+  & .gauge-group-header {
+    border-bottom: 1px solid var(--color-white);
+  }
+
+  & .gauge-group-body {
+  }
+
+  & .gauge-group-footer {
+    border-top: 1px solid var(--color-white);
+
+    & label {
+      color: var(--color-white);
+    }
+  }
+}
+
+
+
