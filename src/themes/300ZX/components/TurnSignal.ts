@@ -10,7 +10,8 @@ export class TurnSignal extends HTMLElement {
   connectedCallback() {
     if (this.querySelector('svg')) return; // already built
 
-    const direction = this.getAttribute('direction') === 'right' ? 'right' : 'left';
+    const direction =
+      this.getAttribute('direction') === 'right' ? 'right' : 'left';
     // The host plays the role of the `.arrow` box so existing theme styles apply.
     this.classList.add('arrow', `${direction}-arrow`);
     this.innerHTML = direction === 'right' ? turnArrowRight : turnArrowLeft;

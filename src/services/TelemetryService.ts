@@ -12,11 +12,11 @@ export interface TurnSignals {
 
 export interface TelemetryData {
   rpm: number;
-  speed: number;             // mph or km/h
-  coolantTemp: number;       // Fahrenheit or Celsius
-  fuelLevel: number;         // 0-100 percentage
-  throttlePosition: number;  // 0-100 percentage
-  afr: number;               // Air/Fuel Ratio (e.g., 14.7)
+  speed: number; // mph or km/h
+  coolantTemp: number; // Fahrenheit or Celsius
+  fuelLevel: number; // 0-100 percentage
+  throttlePosition: number; // 0-100 percentage
+  afr: number; // Air/Fuel Ratio (e.g., 14.7)
   turnSignals: TurnSignals;
   gpsPosition: GpsCoordinates;
   batteryVoltage: number;

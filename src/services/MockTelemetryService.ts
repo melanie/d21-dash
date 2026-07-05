@@ -4,9 +4,9 @@ import { TelemetryService, TelemetryData } from './TelemetryService';
 export class MockTelemetryService implements TelemetryService {
   private intervalId: NodeJS.Timeout | null = null;
   private callback: ((data: TelemetryData) => void) | null = null;
-  
+
   // Base state for simulation
-  private currentRpm = 850; 
+  private currentRpm = 850;
   private currentSpeed = 0;
   private fuelLevel = 85.5; // Start at 85.5%
   private ascending = true;
@@ -18,24 +18,24 @@ export class MockTelemetryService implements TelemetryService {
 
   start(): void {
     if (this.intervalId) return;
-    
+
     // Simulate data coming in at 20Hz (every 50ms)
     this.intervalId = setInterval(() => {
       this.tickCount++;
       this.simulateVehicleDynamics();
-      
+
       if (this.callback) {
         this.callback({
           rpm: Math.round(this.currentRpm),
           speed: Math.round(this.currentSpeed),
-          coolantTemp: 190 + (Math.random() * 2), // Stable operating temp with slight variance
+          coolantTemp: 190 + Math.random() * 2, // Stable operating temp with slight variance
           fuelLevel: Number(this.fuelLevel.toFixed(1)),
           throttlePosition: this.ascending ? 85 : 0, // 85% throttle when accelerating, 0% when decelerating
           afr: this.calculateMockAfr(),
           turnSignals: this.calculateMockTurnSignals(),
           gpsPosition: {
-            latitude: 33.4255 + (this.currentSpeed * 0.000001), // Slight drift to simulate movement
-            longitude: -111.9400, 
+            latitude: 33.4255 + this.currentSpeed * 0.000001, // Slight drift to simulate movement
+            longitude: -111.94,
           },
           batteryVoltage: this.calculateMockBatteryVoltage(),
         });
@@ -62,7 +62,7 @@ export class MockTelemetryService implements TelemetryService {
       if (this.currentRpm < 850) {
         this.currentRpm = 850;
         if (this.currentSpeed <= 0) {
-           this.ascending = true; // Restart the pull once stopped
+          this.ascending = true; // Restart the pull once stopped
         }
       }
     }
@@ -84,10 +84,10 @@ export class MockTelemetryService implements TelemetryService {
     // Blink the left turn signal every few seconds just to test the UI indicators
     const isBlinking = Math.floor(this.tickCount / 40) % 4 === 0;
     const blinkState = this.tickCount % 10 < 5; // On/Off flash phase
-    
+
     return {
       left: isBlinking && blinkState,
-      right: false
+      right: false,
     };
   }
 

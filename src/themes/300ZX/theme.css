@@ -44,7 +44,6 @@
   font-style: italic;
 }
 
-
 body {
   margin: 0;
   padding: 0;
@@ -146,7 +145,9 @@ label {
     flex: 2;
   }
 
-  & .gauge-group-header, & .gauge-group-body, & .gauge-group-footer {
+  & .gauge-group-header,
+  & .gauge-group-body,
+  & .gauge-group-footer {
     display: flex;
     flex-direction: row;
     gap: var(--spacing-xs);
@@ -180,7 +181,9 @@ label {
         height: var(--icon-size);
       }
 
-      & path, & rect, & polygon {
+      & path,
+      & rect,
+      & polygon {
         fill: var(--color-white);
       }
     }
@@ -188,7 +191,7 @@ label {
 
   & .gauge-group-body {
     flex: 1;
-    
+
     & .gauge {
       border: 1px solid var(--color-primary);
       padding: 8px;
@@ -237,7 +240,7 @@ label {
           &:before {
             content: '';
             display: block;
-            width: .5rem;
+            width: 0.5rem;
             height: 1px;
             background-color: var(--color-primary);
           }
