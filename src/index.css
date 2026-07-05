@@ -18,6 +18,8 @@
   --font-size-md: 36px;
   --font-size-lg: 48px;
   --font-size-xl: 140px;
+
+  --icon-size: 2rem;
 }
 
 @font-face {
@@ -62,7 +64,7 @@ body {
   padding: var(--spacing-sm);
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md);
+  gap: var(--spacing-sm);
   height: 100vh;
   box-sizing: border-box;
 }
@@ -155,13 +157,31 @@ label {
     padding-bottom: var(--spacing-xs);
     align-items: flex-end;
 
-    & svg {
-      width: 2rem;
-      height: 2rem;
-    }
+    & .gauge-group-header-icon {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--spacing-xs);
 
-    & path, & rect, & polygon {
-      fill: var(--color-white);
+      & .alert {
+        width: calc(var(--icon-size) / 2);
+        height: calc(var(--icon-size) / 2);
+        background-color: var(--color-black);
+      }
+
+      & .alert.on {
+        background-color: var(--color-danger);
+      }
+
+      & svg {
+        width: var(--icon-size);
+        height: var(--icon-size);
+      }
+
+      & path, & rect, & polygon {
+        fill: var(--color-white);
+      }
     }
   }
 

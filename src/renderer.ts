@@ -41,6 +41,10 @@ const turnLeftEl = document.getElementById('turn-left');
 const turnRightEl = document.getElementById('turn-right');
 const gpsEl = document.getElementById('gps-val');
 const batteryEl = document.getElementById('battery-val');
+//const oilPressureEl = document.getElementById('oil-pressure-val');
+//const oilPressureAlertEl = document.getElementById('oil-pressure-alert');
+const fuelAlertEl = document.getElementById('fuel-alert');
+const batteryAlertEl = document.getElementById('battery-alert');
 
 // 2. Listen for data from the Main process
 window.electronAPI.onTelemetryUpdate((data) => {
@@ -53,6 +57,9 @@ window.electronAPI.onTelemetryUpdate((data) => {
   tpsEl.textContent = data.throttlePosition.toFixed(1);
   afrEl.textContent = data.afr.toFixed(2);
   batteryEl.textContent = data.batteryVoltage.toFixed(2);
+  batteryAlertEl.classList.toggle('on', data.batteryVoltage < 12.0);
+  //oilPressureAlertEl.classList.toggle('on', data.oilPressure < 30);
+  fuelAlertEl.classList.toggle('on', data.fuelLevel < 25);
   
   turnLeftEl.classList.toggle('on', data.turnSignals.left);
   turnRightEl.classList.toggle('on', data.turnSignals.right);
