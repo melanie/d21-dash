@@ -25,21 +25,21 @@
 
 @font-face {
   font-family: 'Gona';
-  src: url('./assets/fonts/gona.otf') format('opentype');
+  src: url('../../assets/fonts/gona.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Gona';
-  src: url('./assets/fonts/gona-bold.otf') format('opentype');
+  src: url('../../assets/fonts/gona-bold.otf') format('opentype');
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'DS-Digital';
-  src: url('./assets/fonts/ds-digii.ttf') format('truetype');
+  src: url('../../assets/fonts/ds-digii.ttf') format('truetype');
   font-weight: normal;
   font-style: italic;
 }
