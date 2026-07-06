@@ -1,4 +1,4 @@
-import { turnArrowLeft, turnArrowRight } from './icons';
+import { turnArrowLeft, turnArrowRight } from './svgs';
 
 /**
  * A turn-signal arrow. Set `.active` to light it up.

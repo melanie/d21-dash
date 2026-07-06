@@ -1,15 +1,16 @@
 import './theme.css';
 
-import type { TelemetryData } from '../../preload';
+import { PipGauge, TurnSignal, registerComponents } from './components';
+
 import type { DashTheme } from '../types';
-import { registerComponents, PipGauge, TurnSignal } from './components';
-import { dashboardLayout } from './layout';
-import {
-  fuelIcon,
-  coolantIcon,
-  oilPressureIcon,
-  batteryIcon,
-} from './components/icons';
+import type { TelemetryData } from '../../preload';
+
+// Layout partials, imported as raw HTML strings — see the *.html rule in
+// webpack.renderer.config.ts and the module declaration in src/declarations.d.ts.
+import gaugeGroupEngine from './layout/gauge-group-engine.html';
+import gaugeGroupFuel from './layout/gauge-group-fuel.html';
+import gaugeGroupTach from './layout/gauge-group-tach.html';
+import rowTop from './layout/row-top.html';
 
 registerComponents();
 
@@ -35,12 +36,16 @@ export class ThreeHundredZXTheme implements DashTheme {
   private turnRight: TurnSignal;
 
   mount(root: HTMLElement) {
-    root.innerHTML = dashboardLayout({
-      fuel: fuelIcon,
-      coolant: coolantIcon,
-      oilPressure: oilPressureIcon,
-      battery: batteryIcon,
-    });
+    root.innerHTML = `
+      <div class="container">
+        ${rowTop}
+        <div class="row">
+          ${gaugeGroupFuel}
+          ${gaugeGroupTach}
+          ${gaugeGroupEngine}
+        </div>
+      </div>
+    `;
 
     this.speedEl = root.querySelector('#speed-val');
     this.gpsEl = root.querySelector('#gps-val');

@@ -1,310 +1,365 @@
-:root {
-  --color-primary: #03ff85;
-  --color-danger: #ff5e45;
-  --color-white: #ffffff;
-  --color-black: #050505;
-  --color-gray-500: #888888;
-  --color-gray-800: #333333;
-  --color-gray-900: #1a1a1a;
-  --color-lines: var(--color-gray-900);
-  --color-label: var(--color-white);
+  :root {
+    --color-primary: #03ff85;
+    --color-danger: #ff5e45;
+    --color-white: #ffffff;
+    --color-black: #050505;
+    --color-gray-500: #888888;
+    --color-gray-800: #333333;
+    --color-gray-900: #1a1a1a;
+    --color-lines: var(--color-gray-900);
+    --color-label: var(--color-white);
 
-  --spacing-xxs: 10px;
-  --spacing-xs: 20px;
-  --spacing-sm: 60px;
-  --spacing-md: 120px;
-  --spacing-lg: 200px;
+    --spacing-xxs: 10px;
+    --spacing-xs: 20px;
+    --spacing-sm: 60px;
+    --spacing-md: 120px;
+    --spacing-lg: 180px;
 
-  --font-size-sm: 12px;
-  --font-size-md: 36px;
-  --font-size-lg: 48px;
-  --font-size-xl: 140px;
+    --font-size-sm: 12px;
+    --font-size-md: 36px;
+    --font-size-lg: 48px;
+    --font-size-xl: 140px;
 
-  --icon-size: 2rem;
-}
-
-@font-face {
-  font-family: 'Gona';
-  src: url('../../assets/fonts/gona.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Gona';
-  src: url('../../assets/fonts/gona-bold.otf') format('opentype');
-  font-weight: bold;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'DS-Digital';
-  src: url('../../assets/fonts/ds-digii.ttf') format('truetype');
-  font-weight: normal;
-  font-style: italic;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  background-color: var(--color-black);
-  background-size: 40px 40px;
-  background-image:
-    linear-gradient(to right, var(--color-lines) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--color-lines) 1px, transparent 1px);
-  color: var(--color-primary); /* Terminal green */
-  font-family: 'Gona', sans-serif;
-  font-weight: bold;
-  height: 100vh;
-  box-sizing: border-box;
-  overflow: hidden; /* Prevent scrolling on the dash */
-}
-
-.container {
-  padding: var(--spacing-sm);
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-sm);
-  height: 100vh;
-  box-sizing: border-box;
-}
-
-.row {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: var(--spacing-lg);
-  flex: 7 1 0;
-}
-
-.row-top {
-  flex: 2 1 0;
-  gap: var(--spacing-md);
-}
-
-.arrow {
-  width: var(--spacing-lg);
-  height: var(--spacing-lg);
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.signal {
-  width: 70%;
-  height: auto;
-
-  & path {
-    fill: var(--color-black);
+    --icon-size: 2rem;
   }
 
-  & path:nth-child(2) {
-    fill: var(--color-white);
-  }
-}
-
-.signal.on path {
-  fill: var(--color-primary);
-}
-
-.value {
-  font-family: 'DS-Digital', monospace;
-  font-size: var(--font-size-lg);
-  font-style: italic;
-  font-weight: normal;
-}
-
-label {
-  text-transform: uppercase;
-  color: var(--color-label);
-}
-
-.readout {
-  padding: var(--spacing-xs);
-  border: 2px solid var(--color-white);
-  background-color: var(--color-black);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: 1;
-
-  & label {
-    color: var(--color-white);
-  }
-}
-
-.gauge-group {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-xs);
-  flex: 1;
-  justify-content: space-between;
-
-  &:nth-child(2) {
-    flex: 2;
+  @font-face {
+    font-family: 'Gona';
+    src: url('../../assets/fonts/gona.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
   }
 
-  & .gauge-group-header,
-  & .gauge-group-body,
-  & .gauge-group-footer {
+  @font-face {
+    font-family: 'Gona';
+    src: url('../../assets/fonts/gona-bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'DS-Digital';
+    src: url('../../assets/fonts/ds-digii.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-black);
+    background-size: 40px 40px;
+    background-image:
+      linear-gradient(to right, var(--color-lines) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--color-lines) 1px, transparent 1px);
+    color: var(--color-primary); /* Terminal green */
+    font-family: 'Gona', sans-serif;
+    font-weight: bold;
+    height: 100vh;
+    box-sizing: border-box;
+    overflow: hidden; /* Prevent scrolling on the dash */
+  }
+
+  .container {
+    padding: var(--spacing-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    height: 100vh;
+    box-sizing: border-box;
+  }
+
+  .row {
     display: flex;
     flex-direction: row;
-    gap: var(--spacing-xs);
     justify-content: space-between;
+    gap: var(--spacing-lg);
+    flex: 7 1 0;
   }
 
-  & .gauge-group-header {
-    border-bottom: 2px solid var(--color-white);
-    padding-bottom: var(--spacing-xs);
-    align-items: flex-end;
-
-    & .gauge-group-header-icon {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: var(--spacing-xs);
-
-      & .alert {
-        width: calc(var(--icon-size) / 2);
-        height: calc(var(--icon-size) / 2);
-        background-color: var(--color-black);
-      }
-
-      & .alert.on {
-        background-color: var(--color-danger);
-      }
-
-      & svg {
-        width: var(--icon-size);
-        height: var(--icon-size);
-      }
-
-      & path,
-      & rect,
-      & polygon {
-        fill: var(--color-white);
-      }
-    }
+  .row-top {
+    flex: 2 1 0;
+    gap: var(--spacing-md);
   }
 
-  & .gauge-group-body {
+  .arrow {
+    width: var(--spacing-lg);
+    height: var(--spacing-lg);
     flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-    & .gauge {
-      border: 1px solid var(--color-primary);
-      padding: 8px;
-      display: flex;
-      align-items: stretch;
-      justify-content: center;
-      gap: 16px;
-      flex: 1;
+  .signal {
+    width: 70%;
+    height: auto;
 
-      & .gauge-pips {
-        display: flex;
-        flex-basis: 60%;
-        flex-direction: column;
-        gap: 4px;
+    & path {
+      fill: var(--color-black);
+    }
 
-        & span {
-          width: 100%;
-          padding: 3px;
-          background-color: var(--color-primary);
-          flex: 1;
-          border-radius: 2px;
-          opacity: 0.3;
-        }
-
-        & span.on {
-          opacity: 1;
-        }
-      }
-
-      & .gauge-legend {
-        display: flex;
-        flex-basis: 40%;
-        flex-direction: column;
-        justify-content: space-between;
-        gap: var(--spacing-xs);
-        border-left: 1px solid var(--color-primary);
-
-        & span {
-          font-size: var(--font-size-sm);
-          color: var(--color-primary);
-          display: flex;
-          align-items: center;
-          justify-content: flex-start;
-          gap: var(--spacing-xxs);
-
-          &:before {
-            content: '';
-            display: block;
-            width: 0.5rem;
-            height: 1px;
-            background-color: var(--color-primary);
-          }
-
-          &:first-child {
-            align-items: flex-start;
-          }
-
-          &:last-child {
-            align-items: flex-end;
-          }
-        }
-      }
+    & path:nth-child(2) {
+      fill: var(--color-white);
     }
   }
 
-  & .gauge-group-footer {
-    border-top: 2px solid var(--color-white);
-    padding-top: var(--spacing-xs);
+  .signal.on path:nth-child(1) {
+    fill: var(--color-primary);
+  }
+
+  .value {
+    font-family: 'DS-Digital', monospace;
+    font-size: var(--font-size-lg);
+    font-style: italic;
+    font-weight: normal;
+  }
+
+  label {
+    text-transform: uppercase;
+    color: var(--color-label);
+  }
+
+  .readout {
+    padding: var(--spacing-xs);
+    border: 2px solid var(--color-white);
+    background-color: var(--color-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
 
     & label {
       color: var(--color-white);
     }
   }
-}
 
-.readout-speed {
-  justify-content: flex-end;
-  flex: 2;
-  padding-left: var(--spacing-sm);
-  padding-right: var(--spacing-sm);
+  .gauge-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    flex: 1;
+    justify-content: space-between;
 
-  & .value {
-    font-size: var(--font-size-xl);
+    &:nth-child(2) {
+      flex: 2;
+    }
+
+    & .gauge-group-header,
+    & .gauge-group-body,
+    & .gauge-group-footer {
+      display: flex;
+      flex-direction: row;
+      gap: var(--spacing-xs);
+      justify-content: space-between;
+    }
+
+    & .gauge-group-header {
+      border-bottom: 2px solid var(--color-white);
+      padding-bottom: var(--spacing-xs);
+      align-items: flex-end;
+
+      & .gauge-group-header-icon {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: var(--spacing-xs);
+
+        & .alert {
+          width: calc(var(--icon-size) / 2);
+          height: calc(var(--icon-size) / 2);
+          background-color: var(--color-black);
+        }
+
+        & .alert.on {
+          background-color: var(--color-danger);
+        }
+
+        & svg {
+          width: var(--icon-size);
+          height: var(--icon-size);
+        }
+
+        & path,
+        & rect,
+        & polygon {
+          fill: var(--color-white);
+        }
+      }
+    }
+
+    & .gauge-group-body {
+      flex: 1;
+
+      & .gauge {
+        border: 1px solid var(--color-primary);
+        padding: 8px;
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+        gap: 16px;
+        flex: 1;
+
+        & .gauge-pips {
+          display: flex;
+          flex-basis: 60%;
+          flex-direction: column;
+          gap: 4px;
+
+          & span {
+            width: 100%;
+            padding: 3px;
+            background-color: var(--color-primary);
+            flex: 1;
+            border-radius: 2px;
+            opacity: 0.3;
+          }
+
+          & span.on {
+            opacity: 1;
+          }
+        }
+
+        & .gauge-legend {
+          display: flex;
+          flex-basis: 40%;
+          flex-direction: column;
+          justify-content: space-between;
+          gap: var(--spacing-xs);
+          border-left: 1px solid var(--color-primary);
+
+          & span {
+            font-size: var(--font-size-sm);
+            color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: var(--spacing-xxs);
+
+            &:before {
+              content: '';
+              display: block;
+              width: 0.5rem;
+              height: 1px;
+              background-color: var(--color-primary);
+            }
+
+            &:first-child {
+              align-items: flex-start;
+            }
+
+            &:last-child {
+              align-items: flex-end;
+            }
+          }
+        }
+      }
+    }
+
+    & .gauge-group-footer {
+      border-top: 2px solid var(--color-white);
+      padding-top: var(--spacing-xs);
+
+      & label {
+        color: var(--color-white);
+      }
+    }
   }
 
-  & label {
-    padding-left: var(--spacing-xs);
-  }
-}
-
-.readout-gps {
-  flex: 2;
-}
-
-.readout-rpm {
-  flex: 1;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  gap: var(--spacing-xs);
-
-  & .readout {
-    flex: 0 0 var(--spacing-md);
+  .readout-speed {
     justify-content: flex-end;
-  }
-}
+    flex: 2;
+    padding-left: var(--spacing-sm);
+    padding-right: var(--spacing-sm);
 
-.readout-tach {
-  flex: 3;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  gap: var(--spacing-xs);
-  border: none;
-  background-color: transparent;
-}
+    & .value {
+      font-size: var(--font-size-xl);
+    }
+
+    & label {
+      padding-left: var(--spacing-xs);
+    }
+  }
+
+  .readout-gps {
+    flex: 2;
+  }
+
+  .readout-rpm {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: var(--spacing-xs);
+
+    & .readout {
+      flex: 0 0 var(--spacing-md);
+      justify-content: flex-end;
+    }
+  }
+
+  .readout-tach {
+    flex: 3;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: var(--spacing-xs);
+    border: none;
+    background-color: transparent;
+    position: relative;
+    padding: 0;
+
+    & .tach-layers {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    & svg {
+      width: 100%;
+      height: auto;
+      fill: pink;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      &#tach-fill {
+        fill: var(--color-black);
+      }
+
+      &#tach-border {
+        fill: var(--color-white);
+      }
+
+      &#tach-border-top {
+        fill: var(--color-danger);
+      }
+    }
+
+    & .tach-pips {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      gap: 8px;
+      padding-bottom: var(--spacing-sm);
+
+      & span {
+        width: 100%;
+        height: 100%;
+        background-color: var(--color-primary);
+        opacity: 0.3;
+        border-radius: 2px;
+
+        &:first-child {
+          margin-left: calc(var(--spacing-sm) / 2);
+        }
+        &:last-child {
+          margin-right: calc(var(--spacing-sm) / 2);
+        }
+      }
+    }
+  }

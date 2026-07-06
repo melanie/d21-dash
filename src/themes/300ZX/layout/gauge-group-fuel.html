@@ -1,0 +1,30 @@
+<!-- Left gauge group: TPS, fuel level, and air/fuel ratio. -->
+<div class="gauge-group">
+  <div class="gauge-group-header">
+    <span></span>
+    <div class="gauge-group-header-icon">
+      <span id="fuel-alert" class="alert"></span>
+      <svg viewBox="0 0 48 48">
+        <path
+          d="M47.36 17.28a2 2 0 0 0 -2.82 0c-3.68 4 -5.54 6.74 -5.54 8.38v15a2 2 0 0 1 -4 0V13.76a5 5 0 0 0 -5 -5h-0.5a0.52 0.52 0 0 1 -0.5 -0.52V4.76A3.5 3.5 0 0 0 25.5 1.24h-22A3.52 3.52 0 0 0 0 4.76v38a3.5 3.5 0 0 0 3.5 3.48h22a3.48 3.48 0 0 0 3.5 -3.48V13.24a0.5 0.5 0 0 1 0.5 -0.48H30a1 1 0 0 1 1 1v27a6 6 0 0 0 12 0v-4.46a0.5 0.5 0 0 1 0.28 -0.46l2 -1.02a3 3 0 0 0 1.66 -2.68v-2.38a3 3 0 0 0 -3 -3h-0.52a0.5 0.5 0 0 1 -0.5 -0.5V26a26.94 26.94 0 0 1 4.48 -5.82 2 2 0 0 0 -0.04 -2.9Zm-25.86 14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h2a1.02 1.02 0 0 1 1 1Zm2 -17.5a1 1 0 0 1 -1 1h-16a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h16a1.02 1.02 0 0 1 1 1Z"
+        ></path>
+      </svg>
+    </div>
+    <span></span>
+  </div>
+  <div class="gauge-group-body">
+    <pip-gauge id="tps-gauge" min="0" max="100" legend="100%,,,,0%"></pip-gauge>
+    <pip-gauge id="fuel-gauge" min="0" max="100" legend="F,,½,,E"></pip-gauge>
+    <pip-gauge
+      id="afr-gauge"
+      min="10"
+      max="18"
+      legend="18,17,16,15,14,13,12,11"
+    ></pip-gauge>
+  </div>
+  <div class="gauge-group-footer">
+    <label>TPS</label>
+    <label>Fuel</label>
+    <label>AFR</label>
+  </div>
+</div>
