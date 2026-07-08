@@ -340,33 +340,12 @@
       &#tach-border-top {
         fill: var(--color-danger);
       }
-    }
 
-    & .tach-pips {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      width: 100%;
-      max-height: 100%;
-      aspect-ratio: 745 / 283;
-      clip-path: url(#tach-fill-clip);
-      display: flex;
-      gap: 8px;
-      padding-bottom: var(--spacing-sm);
-
-      & span {
-        width: 100%;
-        height: 100%;
-        background-color: var(--color-primary);
+      &#tach-pips {
         opacity: 0.3;
-        border-radius: 2px;
 
-        &:first-child {
-          margin-left: calc(var(--spacing-sm) / 2);
-        }
-        &:last-child {
-          margin-right: calc(var(--spacing-sm) / 2);
+        & .pip {
+          fill: var(--color-primary);
         }
       }
     }
