@@ -8,6 +8,7 @@ export class MockTelemetryService implements TelemetryService {
   // Base state for simulation
   private currentRpm = 850;
   private currentSpeed = 0;
+  private currentThrottle = 0;
   private fuelLevel = 85.5; // Start at 85.5%
   private ascending = true;
   private tickCount = 0;
@@ -30,7 +31,7 @@ export class MockTelemetryService implements TelemetryService {
           speed: Math.round(this.currentSpeed),
           coolantTemp: 190 + Math.random() * 2, // Stable operating temp with slight variance
           fuelLevel: Number(this.fuelLevel.toFixed(1)),
-          throttlePosition: this.ascending ? 85 : 0, // 85% throttle when accelerating, 0% when decelerating
+          throttlePosition: Math.round(this.currentThrottle), // Sweeps 0-100% across the accel/decel cycle
           afr: this.calculateMockAfr(),
           turnSignals: this.calculateMockTurnSignals(),
           gpsPosition: {
@@ -55,10 +56,13 @@ export class MockTelemetryService implements TelemetryService {
     if (this.ascending) {
       this.currentRpm += 120;
       this.currentSpeed += 0.5;
+      // Ramp throttle up to full so the demo sweeps through every tach mask.
+      this.currentThrottle = Math.min(100, this.currentThrottle + 3);
       if (this.currentRpm > 5500) this.ascending = false;
     } else {
       this.currentRpm -= 180;
       this.currentSpeed = Math.max(0, this.currentSpeed - 0.3); // Coasting down
+      this.currentThrottle = Math.max(0, this.currentThrottle - 4); // Lift off
       if (this.currentRpm < 850) {
         this.currentRpm = 850;
         if (this.currentSpeed <= 0) {
