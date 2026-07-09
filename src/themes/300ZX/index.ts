@@ -54,7 +54,7 @@ const TACH_RPM_ANCHORS: ReadonlyArray<readonly [krpm: number, frac: number]> = [
   [2, 0.33],
   [3, 0.55],
   [4, 0.72],
-  [5, 0.85],
+  [5, 0.84],
   [6, 0.925], // tuned so redline starts at bar 37 → 3 danger bars (of 40)
   [7, 1.0],
 ];
