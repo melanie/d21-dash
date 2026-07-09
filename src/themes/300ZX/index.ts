@@ -28,22 +28,22 @@ function tachMaskFor(throttlePosition: number): number {
 }
 
 /**
- * Tach pip geometry (SVG user units). The pips are evenly spaced bars; only how
- * many light up varies with rpm. Spacing/offset keeps the first and last pip
- * inside the mask walls at x=30 and x=714.4 (see gauge-group-tach.html).
+ * Tach bar geometry (SVG user units). Bars are evenly spaced; only how many
+ * light up varies with rpm. 40 bars × 17 step fits the strip from first bar
+ * x=34.5 to last bar right=709.5 inside the mask walls at x=30 / x=714.4.
  */
-const TACH_PIP_COUNT = 35;
-const TACH_PIP_FIRST_X = 34.5;
-const TACH_PIP_STEP = 19.5;
-const TACH_PIP_WIDTH = 12;
-const TACH_PIP_HEIGHT = 283;
-const TACH_PIP_RX = 2;
+const TACH_BAR_COUNT = 40;
+const TACH_BAR_FIRST_X = 34.5;
+const TACH_BAR_STEP = 17;
+const TACH_BAR_WIDTH = 12;
+const TACH_BAR_HEIGHT = 283;
+const TACH_BAR_RX = 2;
 
-/** Pips lit only above this rpm (×1000) are the redline zone (danger color). */
+/** Bars lit only above this rpm (×1000) are the redline zone (danger color). */
 const TACH_REDLINE_KRPM = 6;
 
 /**
- * Where each tach marker (in ×1000 rpm) sits along the pip strip, as a fraction
+ * Where each tach marker (in ×1000 rpm) sits along the bar strip, as a fraction
  * (0-1) of its width. Mirrors the original 300ZX face: 0.5-3 fills just over
  * half the width, then the spacing tightens as revs climb (3→4 > 4→5 > 5→6 …).
  * Placeholder distribution until real vehicle data dials it in.
@@ -55,12 +55,12 @@ const TACH_RPM_ANCHORS: ReadonlyArray<readonly [krpm: number, frac: number]> = [
   [3, 0.55],
   [4, 0.72],
   [5, 0.85],
-  [6, 0.94],
+  [6, 0.925], // tuned so redline starts at bar 37 → 3 danger bars (of 40)
   [7, 1.0],
 ];
 
 /**
- * Fraction (0-1) of the pip strip that should be lit for a given rpm, via
+ * Fraction (0-1) of the bar strip that should be lit for a given rpm, via
  * piecewise-linear interpolation over the non-linear anchor points above.
  */
 function tachFillFraction(rpm: number): number {
@@ -105,7 +105,7 @@ export class ThreeHundredZXTheme implements DashTheme {
   private tachPipsGroup: SVGGElement;
   private tachPips: SVGRectElement[] = [];
   private tachMask = -1; // last mask applied; -1 forces the first update
-  private tachLit = -1; // last lit-pip count; -1 forces the first update
+  private tachLit = -1; // last lit-bar count; -1 forces the first update
 
   mount(root: HTMLElement) {
     root.innerHTML = `
@@ -140,39 +140,39 @@ export class ThreeHundredZXTheme implements DashTheme {
     this.buildTachLabels(root.querySelector('#tach-labels'));
   }
 
-  /** Build the evenly spaced tach pip bars into the (clipped) pips group. */
+  /** Build the evenly spaced tach bars into the (clipped) bars group. */
   private buildTachPips(group: SVGGElement): SVGRectElement[] {
     const svgNS = 'http://www.w3.org/2000/svg';
-    // Pips from this index up only light above TACH_REDLINE_KRPM → danger color.
+    // Bars from this index up only light above TACH_REDLINE_KRPM → danger color.
     const redlineStart = Math.round(
-      tachFillFraction(TACH_REDLINE_KRPM * 1000) * TACH_PIP_COUNT,
+      tachFillFraction(TACH_REDLINE_KRPM * 1000) * TACH_BAR_COUNT,
     );
-    const pips: SVGRectElement[] = [];
-    for (let i = 0; i < TACH_PIP_COUNT; i++) {
+    const bars: SVGRectElement[] = [];
+    for (let i = 0; i < TACH_BAR_COUNT; i++) {
       const rect = document.createElementNS(svgNS, 'rect');
       rect.setAttribute('class', i >= redlineStart ? 'pip redline' : 'pip');
-      rect.setAttribute('x', String(TACH_PIP_FIRST_X + i * TACH_PIP_STEP));
+      rect.setAttribute('x', String(TACH_BAR_FIRST_X + i * TACH_BAR_STEP));
       rect.setAttribute('y', '0');
-      rect.setAttribute('width', String(TACH_PIP_WIDTH));
-      rect.setAttribute('height', String(TACH_PIP_HEIGHT));
-      rect.setAttribute('rx', String(TACH_PIP_RX));
+      rect.setAttribute('width', String(TACH_BAR_WIDTH));
+      rect.setAttribute('height', String(TACH_BAR_HEIGHT));
+      rect.setAttribute('rx', String(TACH_BAR_RX));
       group.appendChild(rect);
-      pips.push(rect);
+      bars.push(rect);
     }
-    return pips;
+    return bars;
   }
 
   /**
-   * Draw the rpm increment labels (0.5-7) beneath the tach. They share the pip
+   * Draw the rpm increment labels (0.5-7) beneath the tach. They share the bar
    * strip's x-range so each label sits under where that rpm's fill ends, and
    * they live in an svg with the same width/viewBox as the tach so scaling
    * matches. Static — built once, never touched per-frame.
    */
   private buildTachLabels(svg: SVGSVGElement): void {
     const svgNS = 'http://www.w3.org/2000/svg';
-    const stripLeft = TACH_PIP_FIRST_X;
+    const stripLeft = TACH_BAR_FIRST_X;
     const stripRight =
-      TACH_PIP_FIRST_X + (TACH_PIP_COUNT - 1) * TACH_PIP_STEP + TACH_PIP_WIDTH;
+      TACH_BAR_FIRST_X + (TACH_BAR_COUNT - 1) * TACH_BAR_STEP + TACH_BAR_WIDTH;
     for (const [krpm, frac] of TACH_RPM_ANCHORS) {
       const text = document.createElementNS(svgNS, 'text');
       text.setAttribute(
@@ -214,9 +214,9 @@ export class ThreeHundredZXTheme implements DashTheme {
       );
     }
 
-    // Light pips left-to-right up to the current rpm along the non-linear tach
+    // Light bars left-to-right up to the current rpm along the non-linear tach
     // scale. Dirty-checked so a steady rpm doesn't re-toggle classes each frame.
-    const litCount = Math.round(tachFillFraction(data.rpm) * TACH_PIP_COUNT);
+    const litCount = Math.round(tachFillFraction(data.rpm) * TACH_BAR_COUNT);
     if (litCount !== this.tachLit) {
       this.tachLit = litCount;
       this.tachPips.forEach((pip, index) => {

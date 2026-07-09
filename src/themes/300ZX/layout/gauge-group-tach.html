@@ -35,9 +35,9 @@
       >
         <defs>
           <!--
-            Pip bars are generated in index.ts (see the TACH_PIP_* constants,
+            Tach bars are generated in index.ts (see the TACH_BAR_* constants,
             spaced to sit inside the mask walls at x=30 / x=714.4) and appended
-            to #tach-pips-group. index.ts toggles each pip's `on` class to light
+            to #tach-pips-group. index.ts toggles each bar's `on` class to light
             the tach up to the current rpm.
           -->
           <!--
@@ -112,7 +112,7 @@
   </div>
   <!--
     RPM increment labels (0.5-7), populated in index.ts. Same width + viewBox
-    x-range (0-745) as the tach svgs, so labels align with the pips above.
+    x-range (0-745) as the tach svgs, so labels align with the bars above.
   -->
   <div class="tach-labels-container">
     <svg
