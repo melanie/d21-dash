@@ -314,7 +314,7 @@ label {
     left: 30%;
     width: var(--spacing-xxs);
     height: var(--spacing-xxs);
-    background-color: var(--color-white);
+    background-color: var(--color-danger);
     border-radius: 50%;
   }
 
