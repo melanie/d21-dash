@@ -10,6 +10,8 @@ import gaugeGroupEngine from './layout/gauge-group-engine.html';
 import gaugeGroupFuel from './layout/gauge-group-fuel.html';
 import gaugeGroupTach from './layout/gauge-group-tach.html';
 import rowTop from './layout/row-top.html';
+// Map image asset
+import mapImage from '../../assets/images/map-example.jpg';
 
 registerComponents();
 
@@ -89,6 +91,7 @@ export class ThreeHundredZXTheme implements DashTheme {
   private speedEl: HTMLElement;
   private gpsEl: HTMLElement;
   private rpmEl: HTMLElement;
+  private mapImg: HTMLImageElement;
 
   private tpsGauge: PipGauge;
   private fuelGauge: PipGauge;
@@ -122,6 +125,12 @@ export class ThreeHundredZXTheme implements DashTheme {
     this.speedEl = root.querySelector('#speed-val');
     this.gpsEl = root.querySelector('#gps-val');
     this.rpmEl = root.querySelector('#rpm-val');
+    this.mapImg = root.querySelector('.readout-map img');
+
+    // Set the map image source from the imported asset
+    if (this.mapImg) {
+      this.mapImg.src = mapImage;
+    }
 
     this.tpsGauge = root.querySelector('#tps-gauge');
     this.fuelGauge = root.querySelector('#fuel-gauge');
